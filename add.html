@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Add a new video</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="input-field">
+                <input id="videoAdd" type="url" class="validate">
+                <label for="videoAdd">Paste URL from video you want to add to playlist</label> 
+                <input id="testing" type="text" placeholder="text testing">       
+                <button class="btn waves-effect waves-light" name="action" id="action">Submit
+                <i class="material-icons right">send</i>
+      </button>
+            
+            </div>
+        </div>
+        <script>
+            console.log('passing through')
+            document.getElementById('action').addEventListener('click', function() {
+                let val = document.getElementById('videoAdd').value
+                console.log(val)
+                console.log(document.getElementById('testing').value)
+                console.log('inside')
+                localStorage.setItem('url', val)
+                alert('Video added to playlist');
+            })
+        </script>
+    </body>
+</html>

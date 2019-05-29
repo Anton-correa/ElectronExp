@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Youtuber Player</title>
+    <!--This is an electron application that adds youtube videos to a playlist-->
+  </head>
+  <body>
+    <nav>
+        <div class="nav-wrapper #b71c1c red darken-4">
+            <a href="#" class="brand-logo center #b71c1c red darken-4"><i class="large material-icons">video_library</i>Youtuber Music Player</a>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li><div class="user-view">
+            <div class="background #b71c1c red darken-3"></div>
+            <a href="#"><span class="white-text name">Your playlist</span></a>
+        </div></li>
+        <li>playlist</li>
+        <li><ul class="collection">
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+            <li class="collection-item">Alvin</li>
+        </ul></li>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons darken-2">menu</i></a>
+    <div id="test" name="test">
+        <a class="btn-floating tooltipped right-align btn-large waves-effect waves-light red" data-tooltip="Add new video to playlist" id="adding"><i class="material-icons">add</i></a>
+        <button id="checkLocal">Check Storage</button>
+    </div>
+    <script>
+        require('./main.js')
+        $ = require('jquery')
+        var getYoutubeTitle = require('get-youtube-title')
+
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems);
+        M.AutoInit();
+    });
+
+    document.getElementById('checkLocal').addEventListener('click', function() {
+        console.log(localStorage.getItem('url'))
+        
+    })
+        
+    var YTurl = localStorage.getItem('url')
+    YTurl = YTurl.substring(YTurl.lastIndexOf("=") + 1)
+        
+    if(localStorage.getItem('url') != null){
+        getYoutubeTitle(YTurl, function (err, title) {
+        //document.querySelector('.collection').innerHTML('<li class="collection-item">'+ title +'</li>')
+        $('.collection').append('<li class="collection-item">'+ title +'</li>')
+        })
+    }
+
+    
+    </script>
+  </body>
+</html>
