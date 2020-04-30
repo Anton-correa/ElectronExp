@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "get-youtube-title": "^1.0.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jsdom": "^15.0.0",
     "materialize-css": "^1.0.0-rc.2"
   }
